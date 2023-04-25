@@ -4,6 +4,7 @@ let comp = 0;
 let play = 0;
 let winner = document.querySelector('.winnerdisplay');
 let time = document.querySelector('.timer');
+let nextgame = document.querySelector('.nextgame');
 
 function computerturn() { // generating a random computer answer
     let random_index = Math.floor(Math.random() * 6 + 1);
@@ -11,11 +12,11 @@ function computerturn() { // generating a random computer answer
         computerdisplay.innerHTML = `<img class="computerimg" src="rock.jpg">`;
         comp = 1;
     }
-     else if(random_index == 2 || random_index == 4) {
+    else if (random_index == 2 || random_index == 4) {
         computerdisplay.innerHTML = `<img class="computerimg" src="scissor.png">`;
         comp = 2;
     }
-    else{
+    else {
         computerdisplay.innerHTML = `<img class="computerimg" src="paper.png">`;
         comp = 3;
     }
@@ -42,7 +43,7 @@ const timer = () => { //displays timer
 
 
 let buttons = document.getElementsByClassName('button'); // displaying player's choice
-for (let i = 0; i <= 2; i++) { 
+for (let i = 0; i <= 2; i++) {
     buttons[i].addEventListener('click', () => {
         timer();
         clear();
@@ -66,13 +67,17 @@ for (let i = 0; i <= 2; i++) {
 }
 
 function winnerdisplay() { //checking winner
-   if(comp == play){
-    winner.innerHTML = "Computer won";
-   }
-   else if((comp+1)== play || (comp == 3 && play == 1)){
-    winner.innerHTML = "Player won";
-   }
-   else{
-    winner.innerHTML = "Draw";
-   }
+    if (comp == play) {
+        winner.innerHTML = "Computer won";
+    }
+    else if ((comp + 1) == play || (comp == 3 && play == 1)) {
+        winner.innerHTML = "Player won";
+    }
+    else {
+        winner.innerHTML = "Draw";
+    }
+
 }
+nextgame.addEventListener('click', () => {
+    clear();
+})
